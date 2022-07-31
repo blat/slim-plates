@@ -25,7 +25,7 @@ class Plates
      *
      * @return mixed
      */
-    public function __call(string $name, array $args): mixed
+    public function __call(string $name, array $args)
     {
         return call_user_func_array([$this->engine, $name], $args);
     }
