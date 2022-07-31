@@ -4,8 +4,11 @@ namespace Slim\Views;
 
 use League\Plates\Engine;
 use League\Plates\Extension\ExtensionInterface;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\UriInterface;
 use Psr\Http\Server\MiddlewareInterface;
+use Psr\Http\Server\RequestHandlerInterface;
 use Slim\App;
 
 class PlatesExtension implements ExtensionInterface, MiddlewareInterface
