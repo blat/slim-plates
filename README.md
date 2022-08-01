@@ -65,7 +65,7 @@ You can use `urlFor` to generate complete URLs to any Slim application named rou
 
 <h1>User List</h1>
 <ul>
-    <li><a href="<?= $this->urlFor('profile', ['name' => 'josh']) ?>" <?php if ($this->isCurrentUrl('profile', ['name' => 'josh']): ?>}class="active"<?php endif ?>}>Josh</a></li>
+    <li><a href="<?= $this->urlFor('profile', ['name' => 'josh']) ?>" <?php if ($this->isCurrentUrl('profile', ['name' => 'josh'])): ?>}class="active"<?php endif ?>}>Josh</a></li>
     <li><a href="<?= $this->urlFor('profile', ['name' => 'andrew']) ?>">Andrew</a></li>
 </ul>
 ```
