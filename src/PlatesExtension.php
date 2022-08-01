@@ -47,7 +47,7 @@ class PlatesExtension implements ExtensionInterface, MiddlewareInterface
      */
     public function register(Engine $engine)
     {
-        foreach (['urlFor', 'fullUrlFor', 'isCurrentUrl', 'getCurrentUrl', 'getBasePath'] as $name) {
+        foreach (['urlFor', 'fullUrlFor', 'isCurrentUrl', 'currentUrl', 'basePath'] as $name) {
             $engine->registerFunction($name, [$this, $name]);
         }
     }
@@ -88,7 +88,7 @@ class PlatesExtension implements ExtensionInterface, MiddlewareInterface
      */
     public function isCurrentUrl(string $routeName, array $data = []): bool
     {
-        $currentUrl = $this->getBasePath() . $this->uri->getPath();
+        $currentUrl = $this->basePath() . $this->uri->getPath();
         $result = $this->app->getRouteCollector()->getRouteParser()->urlFor($routeName, $data);
 
         return $result === $currentUrl;
@@ -101,9 +101,9 @@ class PlatesExtension implements ExtensionInterface, MiddlewareInterface
      *
      * @return string
      */
-    public function getCurrentUrl(bool $withQueryString = false): string
+    public function currentUrl(bool $withQueryString = false): string
     {
-        $currentUrl = $this->getBasePath() . $this->uri->getPath();
+        $currentUrl = $this->basePath() . $this->uri->getPath();
         $query = $this->uri->getQuery();
 
         if ($withQueryString && !empty($query)) {
@@ -118,7 +118,7 @@ class PlatesExtension implements ExtensionInterface, MiddlewareInterface
      *
      * @return string
      */
-    public function getBasePath(): string
+    public function basePath(): string
     {
         return $this->app->getBasePath();
     }
